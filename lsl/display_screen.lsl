@@ -26,8 +26,10 @@ default
         if (llSubStringIndex(msg, head) != 0) return;
 
         string tex = llGetSubString(msg, llStringLength(head), -1);
-        if ((key)tex || llGetInventoryType(tex) == INVENTORY_TEXTURE)
-            llSetTexture(tex, FACE_SCREEN);
+        if ((key)tex)
+            llSetTexture(tex, FACE_SCREEN);                 // a UUID
+        else if (llGetInventoryType(tex) == INVENTORY_TEXTURE)
+            llSetTexture(tex, FACE_SCREEN);                 // a texture of that name in this screen
     }
 
     changed(integer change)
